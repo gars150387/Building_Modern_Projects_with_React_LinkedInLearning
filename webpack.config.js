@@ -11,14 +11,14 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/react"],
+          presets: ["@babel/env"],
         },
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
-    ],
+    ]
   },
   resolve: {
     extensions: ["*", ".js", ".jsx"],
@@ -29,13 +29,14 @@ module.exports = {
     filename: "bundle.js",
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, "public/"),
+    static : {
+      directory : path.join(__dirname, "public/")
     },
     port: 3000,
-    devMiddleware: {
-      publicPath: "https://localhost:3000/dist/",
+    devMiddleware:{
+       publicPath: "https://localhost:3000/dist/",
     },
     hot: "only",
   },
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };
